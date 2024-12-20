@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using System.Reflection;
 
 namespace MarkaApp
 {
@@ -7,6 +9,16 @@ namespace MarkaApp
 		public static MauiApp CreateMauiApp()
 		{
 			var builder = MauiApp.CreateBuilder();
+
+			var a = Assembly.GetExecutingAssembly();
+			using var stream = a.GetManifestResourceStream("MarkaApp.appsettings.json");
+
+			//var config = new ConfigurationBuilder()
+			//	.AddJsonStream(stream)
+			//	.Build();
+
+			//builder.Configuration.AddConfiguration(config);
+
 			builder
 				.UseMauiApp<App>()
 				.ConfigureFonts(fonts =>
