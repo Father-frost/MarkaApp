@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MarkaApp.ConfigPage"
+             Title="Настройки приложения">
+    <VerticalStackLayout>
+        <Label 
+           Text="Ip-адрес сервера"
+           VerticalOptions="Center" 
+           HorizontalOptions="Center" />
+
+        <Entry x:Name="serverIp" Text="{Binding Path=serverIp}"  />
+
+        <Label 
+           Text="Порт сервера"
+           VerticalOptions="Center" 
+           HorizontalOptions="Center" />
+
+        <Entry x:Name="port" Text="{Binding Path=port}"  />
+
+        <Button
+               x:Name="SaveBtn"
+               Text="Сохранить" 
+               SemanticProperties.Hint="Save"
+               Clicked="OnSaveClicked"
+               HorizontalOptions="Fill" />
+
+        <Button
+               x:Name="BackBtn"
+               Text="Назад" 
+               SemanticProperties.Hint="Back"
+               Clicked="OnBackClicked"
+               HorizontalOptions="Fill" />
+    </VerticalStackLayout>
+</ContentPage>
