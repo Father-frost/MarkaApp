@@ -1,24 +1,52 @@
-﻿namespace MarkaApp
+﻿using Microsoft.Extensions.Configuration;
+
+namespace MarkaApp
 {
 	public partial class MainPage : ContentPage
 	{
-		int count = 0;
+		private readonly IConfiguration _configuration;
 
 		public MainPage()
 		{
 			InitializeComponent();
 		}
 
-		private void OnCounterClicked(object sender, EventArgs e)
+		public MainPage(IConfiguration configuration)
 		{
-			count++;
+			InitializeComponent();
+			_configuration = configuration;
+			ConfigBtn.Text = _configuration["port"];
+		}
 
-			if (count == 1)
-				CounterBtn.Text = $"Clicked {count} time";
-			else
-				CounterBtn.Text = $"Clicked {count} times";
+		private async void OnInfoClicked(object sender, EventArgs e)
+		{
+			await Navigation.PushAsync(new InfoPage());
 
-			SemanticScreenReader.Announce(CounterBtn.Text);
+			SemanticScreenReader.Announce(InfoBtn.Text);
+		}
+
+		private async void OnConfigClicked(object sender, EventArgs e)
+		{
+			await Navigation.PushAsync(new ConfigPage());
+
+			SemanticScreenReader.Announce(InfoBtn.Text);
+		}
+
+		private void OnPackAgregateClicked(object sender, EventArgs e)
+		{
+			SemanticScreenReader.Announce(PackAgregateBtn.Text);
+		}
+		private void OnPalletAgregateClicked(object sender, EventArgs e)
+		{
+			SemanticScreenReader.Announce(PalletAgregateBtn.Text);
+		}
+		private void OnChangeInPackClicked(object sender, EventArgs e)
+		{
+			SemanticScreenReader.Announce(ChangeInPackBtn.Text);
+		}
+		private void OnChangeInPalletClicked(object sender, EventArgs e)
+		{
+			SemanticScreenReader.Announce(ChangeInPalletBtn.Text);
 		}
 	}
 

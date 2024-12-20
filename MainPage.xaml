@@ -7,28 +7,52 @@
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-            <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a race car number eight" />
 
             <Label
-                Text="Hello, World!"
+                Text="Маркировка"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" />
 
-            <Label
-                Text="Welcome to &#10;.NET Multi-platform App UI"
-                Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+            <Button
+                x:Name="InfoBtn"
+                Text="Информация" 
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnInfoClicked"
+                HorizontalOptions="Fill" />
 
             <Button
-                x:Name="CounterBtn"
-                Text="Click me" 
+                x:Name="PackAgregateBtn"
+                Text="Агрегация короба" 
                 SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
+                Clicked="OnPackAgregateClicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="PalletAgregateBtn"
+                Text="Агрегация паллеты" 
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnPalletAgregateClicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="ChangeInPackBtn"
+                Text="Замена в коробе" 
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnChangeInPackClicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="ChangeInPalletBtn"
+                Text="Замена в паллете" 
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnChangeInPalletClicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="ConfigBtn"
+                Text="Настройка" 
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnConfigClicked"
                 HorizontalOptions="Fill" />
         </VerticalStackLayout>
     </ScrollView>
