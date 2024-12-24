@@ -10,14 +10,8 @@ namespace MarkaApp
 		{
 			var builder = MauiApp.CreateBuilder();
 
-			var a = Assembly.GetExecutingAssembly();
-			using var stream = a.GetManifestResourceStream("MarkaApp.appsettings.json");
+			//builder.Services.AddTransient<MainPage>();
 
-			//var config = new ConfigurationBuilder()
-			//	.AddJsonStream(stream)
-			//	.Build();
-
-			//builder.Configuration.AddConfiguration(config);
 
 			builder
 				.UseMauiApp<App>()
@@ -27,11 +21,37 @@ namespace MarkaApp
 					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 				});
 
+			builder.AddAppSettings();
+
+			string serverIP = builder.Configuration.GetValue<string>("ServerIp");
+			string serverPort = builder.Configuration.GetValue<string>("ServerPort");
 #if DEBUG
 			builder.Logging.AddDebug();
 #endif
+			//var app = builder.Build();
+
+			//Services = app.Services;
+
+			//return app;
 
 			return builder.Build();
+		}
+		//public static IServiceProvider Services { get; private set; }
+		private static void AddAppSettings(this MauiAppBuilder builder)
+		{
+
+			using Stream stream = Assembly.
+				GetExecutingAssembly()
+				.GetManifestResourceStream("MarkaApp.appsettings.json");
+			if (stream != null)
+			{
+				IConfiguration config = new ConfigurationBuilder()
+					.AddJsonStream(stream)
+					.Build();
+
+
+				builder.Configuration.AddConfiguration(config);
+			}
 		}
 	}
 }
