@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MarkaApp.MainPage">
+             x:Class="MarkaApp.MainPage"
+             Title="Маркировка">
 
     <ScrollView>
         <VerticalStackLayout
@@ -9,7 +10,7 @@
             Spacing="25">
 
             <Label
-                Text="Маркировка"
+                Text=""
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" />
 
@@ -20,7 +21,7 @@
                 Clicked="OnInfoClicked"
                 HorizontalOptions="Fill" />
 
-            <Button
+            <!--<Button
                 x:Name="PackAgregateBtn"
                 Text="Агрегация короба" 
                 SemanticProperties.Hint="Counts the number of times you click"
@@ -32,7 +33,7 @@
                 Text="Агрегация паллеты" 
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnPalletAgregateClicked"
-                HorizontalOptions="Fill" />
+                HorizontalOptions="Fill" />-->
 
             <Button
                 x:Name="ChangeInPackBtn"
@@ -41,12 +42,12 @@
                 Clicked="OnChangeInPackClicked"
                 HorizontalOptions="Fill" />
 
-            <Button
+            <!--<Button
                 x:Name="ChangeInPalletBtn"
                 Text="Замена в паллете" 
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnChangeInPalletClicked"
-                HorizontalOptions="Fill" />
+                HorizontalOptions="Fill" />-->
 
             <Button
                 x:Name="ConfigBtn"

@@ -1,27 +1,30 @@
 ﻿using Microsoft.Extensions.Configuration;
+using System.Security.AccessControl;
 
 namespace MarkaApp
 {
 	public partial class MainPage : ContentPage
 	{
-		private readonly IConfiguration _configuration;
+		IConfiguration configuration;
+
+		//public MainPage()
+		//{
+		//	InitializeComponent();
+		//}
 
 		public MainPage()
 		{
 			InitializeComponent();
-		}
-
-		public MainPage(IConfiguration configuration)
-		{
-			InitializeComponent();
-			_configuration = configuration;
-			ConfigBtn.Text = _configuration["port"];
+			//configuration = MauiProgram.Services.GetService<IConfiguration>();
+			//ConfigBtn.Text = configuration["port"];
 		}
 
 		private async void OnInfoClicked(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new InfoPage());
-
+			////await Navigation.PushAsync(new InfoPage());
+			//var settings = configuration.GetRequiredSection("ServerConfig").Get<Settings>();
+			//await DisplayAlert("ServerConfig", $"{nameof(settings.ServerIp)}: {settings.ServerIp}" +
+			//	$"{nameof(settings.ServerPort)}: {settings.ServerPort}", "OK");
 			SemanticScreenReader.Announce(InfoBtn.Text);
 		}
 
@@ -34,19 +37,20 @@ namespace MarkaApp
 
 		private void OnPackAgregateClicked(object sender, EventArgs e)
 		{
-			SemanticScreenReader.Announce(PackAgregateBtn.Text);
+			//SemanticScreenReader.Announce(PackAgregateBtn.Text);
 		}
 		private void OnPalletAgregateClicked(object sender, EventArgs e)
 		{
-			SemanticScreenReader.Announce(PalletAgregateBtn.Text);
+			//SemanticScreenReader.Announce(PalletAgregateBtn.Text);
 		}
-		private void OnChangeInPackClicked(object sender, EventArgs e)
+		private async void OnChangeInPackClicked(object sender, EventArgs e)
 		{
-			SemanticScreenReader.Announce(ChangeInPackBtn.Text);
+			await Navigation.PushAsync(new ChangeInPackPage());
+			//SemanticScreenReader.Announce(ChangeInPackBtn.Text);
 		}
 		private void OnChangeInPalletClicked(object sender, EventArgs e)
 		{
-			SemanticScreenReader.Announce(ChangeInPalletBtn.Text);
+			//SemanticScreenReader.Announce(ChangeInPalletBtn.Text);
 		}
 	}
 
